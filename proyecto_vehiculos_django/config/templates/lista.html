@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated and permiso_visualizar_catalogo %}
+<div class="container py-5" id="vehiculoList">
+    <div class="title py-5">
+        <h1>Listado de Vehículos</h1>
+    </div>
+    <div class="card" id="card-list">
+        <table class="table table-hover text-center table-resposive-sm">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Serial Carrocería</th>
+                    <th>Serial Motor</th>
+                    <th>Precio</th>
+                    <th>Condición de Precio</th>
+                </tr>
+            </thead>
+        {% if listaVehiculos %}
+        {% for item in listaVehiculos %}
+            <tbody>
+                <tr>
+                    <td>{{item.marca}}</td>
+                    <td>{{item.modelo}}</td>
+                    <td>{{item.serialCarroceria}}</td>
+                    <td>{{item.serialMotor}}</td>
+                    <td>{{item.categoria}}</td>
+                    <td>${{item.precio}}</td>
+                    <td>{{item.marca}}</td>
+                    <td>
+                        {% if item.precio > 30000 %}
+                            Alto
+                        {% elif item.precio <= 30000 and item.precio > 10000 %}
+                            Medio
+                        {% elif item.precio <= 10000 %} 
+                            Bajo
+                        {% else %}
+                            Valor Inválido
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        {% endfor %}
+        {% else %}
+            <h2>No hay información disponible de vehículos en este momento</h1>
+        {% endif %}
+        </table>
+    </div>
+</div>
+{% else %}
+    <h1 class="mt-5 text-center">Debe iniciar sesión y tener permiso para ver el listado de Vehiculos</h1>
+{% endif %}
+
+{% endblock %}

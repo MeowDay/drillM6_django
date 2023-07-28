@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated and permiso_agregar_catalogo %}
+    <div class="form">
+        <h2 style="font-size: 2.5em; margin-left: 6%;color: rgb(47, 80, 109);">Ingresar Vehiculo</h2>
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="GrupoForm">
+                <label>Marca</label>
+                <br>
+                {{form.marca}}
+            </div>
+
+            <div class="GrupoForm">
+                <label>Modelo</label>
+                <br>
+                {{form.modelo}}
+            </div>
+
+            <div class="GrupoForm">
+                <label>Serial Carroceria</label>
+                <br>
+                {{form.serialCarroceria}}
+            </div>
+
+            <div class="GrupoForm">
+                <label>Serial Motor</label>
+                <br>
+                {{form.serialMotor}}
+            </div>
+            
+            <div class="GrupoForm">
+                <label>Categoría</label>
+                <br>
+                {{form.categoria}}
+            </div>
+
+            <div class="GrupoForm">
+                <label>Precio</label>
+                <br>
+                {{form.precio}}
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary" style="width: 10%;">
+
+        </form>
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    </div>
+
+    <style>
+        .form{
+            margin: 2%;
+            padding: 1%;
+            margin-left: 4%;
+            font-size: 1.5em;
+            background-color: aliceblue;
+            width: 600px;
+            border-radius: 3%;
+            border: solid 3px rgb(127, 145, 170)
+        }
+    </style>
+{% else %}
+    <h1>Debe iniciar sesión para agregar vehículos</h1>
+{%endif%}
+
+{% endblock %}

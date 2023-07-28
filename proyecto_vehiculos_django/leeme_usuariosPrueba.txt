@@ -1,0 +1,11 @@
+hay 3 usuarios registrados en el sitio de prueba
+
+test1, el cual no tiene ningún permiso
+test2, el cual tiene permiso de ver el catálogo y agregar vehiculos
+test3, el cual solo tiene el permiso para ver catálogo, el cual se da automáticamente cuando se registra.
+
+la contraseña de estos 3 usuarios es "contraseña" todo minuscula, sin comillas.
+
+Al registrarse se otorga automáticamente el permiso para visualizar el catálogo de vehiculos; pero no para agregar vehiculos.
+
+Para otorgar permiso para agregar vehiculos; puede hacerlo desde el sitio /admin o a través de la shell.

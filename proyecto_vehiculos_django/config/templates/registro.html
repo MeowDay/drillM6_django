@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+
+    <div class="form">
+        <h2 style="font-size: 2.5em; margin-left: 6%;color: rgb(47, 80, 109);">Ingresar Vehiculo</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ register_form|crispy }}
+            <button type="submit" class="btn btn-primary">registrar</button>
+
+        </form>
+        <p>Por favor, inicie sesión</p>
+        <a href="/login">Login</a>
+
+    </div>
+
+    <style>
+        .form{
+            margin: 2%;
+            padding: 1%;
+            margin-left: 4%;
+            font-size: 1.2em;
+            background-color: aliceblue;
+            width: 600px;
+            border-radius: 3%;
+            border: solid 3px rgb(127, 145, 170)
+        }
+    </style>
+
+{% endblock %}
